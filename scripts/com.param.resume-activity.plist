@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.param.resume-activity</string>
+
+	<!-- Refreshes data/activity-local.json for paramiyer.github.io. That file can
+	     only be produced here: it is counted from local clones with `git log`,
+	     which needs no credential and can see private repos. GitHub Actions
+	     runners have no clones, so CI cannot refresh it. Left stale, the site
+	     falls back to the public-only API and the weekly numbers drop ~40x. -->
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/parameshwaraniyer/Code/github/resume-site/scripts/refresh-activity.sh</string>
+	</array>
+
+	<!-- /tmp, matching com.param.bob-standup-digest: anywhere under ~/Documents is
+	     TCC-protected and launchd-spawned processes there fail with
+	     `getcwd: ... Operation not permitted`. The script cd's to the repo itself. -->
+	<key>WorkingDirectory</key>
+	<string>/tmp</string>
+
+	<!-- Load-bearing. launchd's default PATH is /usr/bin:/bin:/usr/sbin:/sbin and
+	     does NOT include /opt/homebrew/bin, where node lives. Without this the
+	     script fails at the first `node` call. This is the same omission that
+	     silently broke the whatsapp bot in July 2026. -->
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+
+	<!-- Mondays 08:00 local. Deliberately an hour before the GitHub Actions
+	     refresh (05:00 UTC = 09:00 Dubai) so that job rebuilds from a snapshot
+	     committed minutes earlier rather than a week-old one. -->
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Weekday</key><integer>1</integer>
+			<key>Hour</key><integer>8</integer>
+			<key>Minute</key><integer>0</integer>
+		</dict>
+	</array>
+
+	<key>RunAtLoad</key>
+	<false/>
+
+	<key>StandardOutPath</key>
+	<string>/tmp/resume-activity.log</string>
+	<key>StandardErrorPath</key>
+	<string>/tmp/resume-activity.log</string>
+</dict>
+</plist>
