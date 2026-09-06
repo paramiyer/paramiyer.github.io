@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-31T21:11:43.412Z",
-  "refreshed_label": "1 Sept 2026",
+  "generated_at": "2026-09-06T09:14:25.836Z",
+  "refreshed_label": "6 Sept 2026",
   "project_count": 10,
   "public_project_count": 4,
   "capability_count": 9,
@@ -33,11 +33,11 @@
     "hIndex": 5
   },
   "activity": {
-    "generated_at": "2026-08-29T03:36:47.902Z",
+    "generated_at": "2026-09-06T09:13:23.610Z",
     "days": 7,
-    "commits": 133,
-    "repos": 3,
-    "prs": 17,
+    "commits": 275,
+    "repos": 4,
+    "prs": 93,
     "scope": "local git history across all repositories"
   },
   "projects": [

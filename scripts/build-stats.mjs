@@ -214,8 +214,7 @@ const PRODUCTS = [
     group: 'client', title: 'Branch & ATM Network Intelligence', tag: 'client engagement',
     blurb: "Geospatial siting, relocation and network planning across a UAE bank's branch and ATM estate, with per-branch catchment signals and a natural-language configuration assistant. In production.",
   },
-  { group: 'own', repo: 'smith', tag: 'own product' },
-  { group: 'own', repo: 'ai-center-locator', tag: 'own product' },
+  { group: 'venture', repo: 'ai-center-locator', tag: 'venture' },
   {
     group: 'commercial', title: 'Ijaba', // marketplace listing 404s as of 2026-08-29 — link removed
 
@@ -236,11 +235,17 @@ const PRODUCTS = [
 const PRODUCT_REPOS = new Set(PRODUCTS.filter((p) => p.repo).map((p) => p.repo));
 
 /* Grouped deliberately. The page states "two enterprise AI products" for the bank
- * and "7 products shipped" in the proof bar; both are true, the two being a subset
- * of the seven. Without the grouping a reader sees 2 and 7 and assumes an error. */
+ * and a total in the proof bar; both are true, the two being a subset of the total.
+ * Without the grouping a reader sees 2 and 6 and assumes an error.
+ *
+ * smith is deliberately NOT here. It is a personal build for learning the stack,
+ * not a product shipped for anyone, and listing it beside client platforms and a
+ * funded-stage venture overstates it. It renders under Selected Technical Builds
+ * instead. A reader who is told "product" and then hears "side project" in an
+ * interview has found a credibility gap, and that is expensive to spend. */
 const GROUPS = [
   { id: 'client',     label: 'Enterprise platforms delivered for clients' },
-  { id: 'own',        label: 'Products I built and run myself' },
+  { id: 'venture',    label: 'Independent venture' },
   { id: 'commercial', label: 'Commercial and marketplace products' },
 ];
 
