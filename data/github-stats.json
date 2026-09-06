@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-06T09:25:42.845Z",
+  "generated_at": "2026-09-06T10:05:16.394Z",
   "refreshed_label": "6 Sept 2026",
-  "project_count": 10,
-  "public_project_count": 4,
+  "project_count": 11,
+  "public_project_count": 5,
   "capability_count": 9,
   "languages": {
-    "Python": 3,
+    "Python": 4,
     "Jupyter Notebook": 3,
     "TypeScript": 3,
     "JavaScript": 1
@@ -41,6 +41,16 @@
     "scope": "local git history across all repositories"
   },
   "projects": [
+    {
+      "name": "vedke-2",
+      "url": "https://github.com/paramiyer/vedke-2",
+      "language": "Python",
+      "pushed_at": "2026-04-21T07:08:23Z",
+      "caps": [
+        "agents",
+        "llm"
+      ]
+    },
     {
       "name": "pii-schema-classifier",
       "url": "https://github.com/paramiyer/pii-schema-classifier",

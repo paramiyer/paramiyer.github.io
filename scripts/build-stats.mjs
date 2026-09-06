@@ -95,10 +95,17 @@ const CATALOGUE = {
     private: true, language: 'Python', since: '2026',
     flagship: true,
   },
+  'vedke-2': {
+    title: 'vedke — Agentic Sanskrit Alignment',
+    blurb:
+      'Renders Sanskrit karaoke by reconciling two independent parses of the same verse. One agent parses the audio — Sarvam batch STT, verbatim mode, word-level timestamps — while another builds text truth from the printed page via PDF-to-SVG extraction and OCR. A third reconciles them with an LLM using anchor-and-retry, since neither parse is authoritative on its own. Guardrails fail the stage closed when timestamps are missing rather than emitting a plausible alignment, and a React review UI takes human corrections back into the pipeline. Python, staged orchestrator, tuned sentence segmenter.',
+    caps: ['agents', 'llm'],
+    flagship: true,
+  },
   'astro': {
     title: 'Multi-Hop RAG Application with Row-Level Security',
     blurb:
-      'A privacy-first reading and Q&A app built on two-pass multi-hop retrieval over stored context, with every answer citing its sources. Postgres with pgvector for embeddings, row-level security so a user can only ever retrieve their own context, and edge functions for question generation and chat. Provider-agnostic: runs against any OpenAI-compatible endpoint, including a local model.',
+      'A privacy-first reading and Q&A app on two-pass multi-hop retrieval over stored context, every answer citing its sources. Postgres with pgvector for embeddings and row-level security so a user can only ever retrieve their own context; Deno edge functions for clarifying-question generation and chat. React 18, TypeScript, Vite and TanStack Query on the front. Provider-agnostic: runs against any OpenAI-compatible endpoint, including a local model.',
     caps: ['llm', 'fullstack'],
     private: true, language: 'TypeScript', since: '2026',
     flagship: true,
@@ -106,7 +113,7 @@ const CATALOGUE = {
   'smith': {
     title: 'smith — Ticketing Product with an MCP Server',
     blurb:
-      'Project → stream → ticket → subtask, with a board, comment threads and an MCP server so the product can be driven from Claude Code. Tables live in a Postgres schema and PostgREST generates the REST API from them, so the web app and the MCP server are two clients of one API. TypeScript monorepo shipping to Vercel with preview-on-PR.',
+      'Project → stream → ticket → subtask, with a board, comment threads and an MCP server so the product can be driven from an AI client. Tables live in a Postgres schema and PostgREST generates the REST API from them, so the web app and the MCP server are two clients of one API. TypeScript monorepo — apps/web, packages/db, packages/mcp — on Supabase Postgres with Zod-validated contracts, shipping to Vercel with preview-on-PR.',
     caps: ['tooling', 'fullstack'],
     private: true, language: 'TypeScript', since: '2026',
     flagship: true,
