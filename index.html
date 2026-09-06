@@ -254,6 +254,7 @@
         <h3 class="cap-name">LLMs &amp; Applied GenAI</h3>
         <p class="cap-proves">Production LLM systems: grounding, structured extraction, cost control</p>
         <div class="chips">
+            <a class="chip" href="https://github.com/paramiyer/vedke-2" target="_blank" rel="noopener"><span class="dot" style="background:#3572A5" aria-hidden="true"></span>vedke — Agentic Sanskrit Alignment</a>
             <a class="chip" href="https://github.com/paramiyer/pii-schema-classifier" target="_blank" rel="noopener"><span class="dot" style="background:#3572A5" aria-hidden="true"></span>AI Schema Classifier</a>
             <a class="chip" href="https://github.com/paramiyer/multi-agent-enterprise-reporting-PMO-planner" target="_blank" rel="noopener"><span class="dot" style="background:#DA5B0B" aria-hidden="true"></span>Multi-Agent AI PMO Planner</a>
             <span class="chip chip--private"><span class="dot" style="background:#3572A5" aria-hidden="true"></span>ltx-reel — Keyframe-Continuous Video Generation</span>
@@ -264,6 +265,7 @@
         <h3 class="cap-name">Multi-Agent Orchestration</h3>
         <p class="cap-proves">Decomposing work across specialised agents with an orchestration layer</p>
         <div class="chips">
+            <a class="chip" href="https://github.com/paramiyer/vedke-2" target="_blank" rel="noopener"><span class="dot" style="background:#3572A5" aria-hidden="true"></span>vedke — Agentic Sanskrit Alignment</a>
             <a class="chip" href="https://github.com/paramiyer/multi-agent-enterprise-reporting-PMO-planner" target="_blank" rel="noopener"><span class="dot" style="background:#DA5B0B" aria-hidden="true"></span>Multi-Agent AI PMO Planner</a>
         </div>
       </div>
@@ -330,6 +332,11 @@
   <!-- GEN:PROJECTS -->
     <div class="cards">
       <article class="card card--flagship">
+        <h3 class="card-t"><a href="https://github.com/paramiyer/vedke-2" target="_blank" rel="noopener">vedke — Agentic Sanskrit Alignment</a></h3>
+        <p class="card-d">Renders Sanskrit karaoke by reconciling two independent parses of the same verse. One agent parses the audio — Sarvam batch STT, verbatim mode, word-level timestamps — while another builds text truth from the printed page via PDF-to-SVG extraction and OCR. A third reconciles them with an LLM using anchor-and-retry, since neither parse is authoritative on its own. Guardrails fail the stage closed when timestamps are missing rather than emitting a plausible alignment, and a React review UI takes human corrections back into the pipeline. Python, staged orchestrator, tuned sentence segmenter.</p>
+        <div class="card-m"><span class="dot" style="background:#3572A5" aria-hidden="true"></span><span>Python</span><span class="sep">·</span><span>updated 4mo ago</span></div>
+      </article>
+      <article class="card card--flagship">
         <h3 class="card-t"><a href="https://github.com/paramiyer/pii-schema-classifier" target="_blank" rel="noopener">AI Schema Classifier</a></h3>
         <p class="card-d">Open-source tool for automated PII and DAMA data-classification audits using LLMs, delivering over 94% cost saving against manual review.</p>
         <div class="card-m"><span class="dot" style="background:#3572A5" aria-hidden="true"></span><span>Python</span><span class="sep">·</span><span>updated 2025</span></div>
@@ -356,12 +363,12 @@
       </article>
       <article class="card card--flagship">
         <h3 class="card-t">Multi-Hop RAG Application with Row-Level Security</h3>
-        <p class="card-d">A privacy-first reading and Q&amp;A app built on two-pass multi-hop retrieval over stored context, with every answer citing its sources. Postgres with pgvector for embeddings, row-level security so a user can only ever retrieve their own context, and edge functions for question generation and chat. Provider-agnostic: runs against any OpenAI-compatible endpoint, including a local model.</p>
+        <p class="card-d">A privacy-first reading and Q&amp;A app on two-pass multi-hop retrieval over stored context, every answer citing its sources. Postgres with pgvector for embeddings and row-level security so a user can only ever retrieve their own context; Deno edge functions for clarifying-question generation and chat. React 18, TypeScript, Vite and TanStack Query on the front. Provider-agnostic: runs against any OpenAI-compatible endpoint, including a local model.</p>
         <div class="card-m"><span class="dot" style="background:#3178c6" aria-hidden="true"></span><span>TypeScript</span><span class="sep">·</span><span>2026</span><span class="sep">·</span><span class="tag-private">private repo</span></div>
       </article>
       <article class="card card--flagship">
         <h3 class="card-t">smith — Ticketing Product with an MCP Server</h3>
-        <p class="card-d">Project → stream → ticket → subtask, with a board, comment threads and an MCP server so the product can be driven from Claude Code. Tables live in a Postgres schema and PostgREST generates the REST API from them, so the web app and the MCP server are two clients of one API. TypeScript monorepo shipping to Vercel with preview-on-PR.</p>
+        <p class="card-d">Project → stream → ticket → subtask, with a board, comment threads and an MCP server so the product can be driven from an AI client. Tables live in a Postgres schema and PostgREST generates the REST API from them, so the web app and the MCP server are two clients of one API. TypeScript monorepo — apps/web, packages/db, packages/mcp — on Supabase Postgres with Zod-validated contracts, shipping to Vercel with preview-on-PR.</p>
         <div class="card-m"><span class="dot" style="background:#3178c6" aria-hidden="true"></span><span>TypeScript</span><span class="sep">·</span><span>2026</span><span class="sep">·</span><span class="tag-private">private repo</span></div>
       </article>
       <article class="card">
@@ -414,9 +421,9 @@
     </div>
     <!-- /GEN:ACTIVITY -->
   <!-- GEN:LANGUAGES -->
-    <div class="langbar" role="img" aria-label="Primary language across 10 projects"><span class="seg" style="width:30.00%;background:#3572A5" title="Python 30.0%"></span><span class="seg" style="width:30.00%;background:#DA5B0B" title="Jupyter Notebook 30.0%"></span><span class="seg" style="width:30.00%;background:#3178c6" title="TypeScript 30.0%"></span><span class="seg" style="width:10.00%;background:#f1e05a" title="JavaScript 10.0%"></span></div>
+    <div class="langbar" role="img" aria-label="Primary language across 11 projects"><span class="seg" style="width:36.36%;background:#3572A5" title="Python 36.4%"></span><span class="seg" style="width:27.27%;background:#DA5B0B" title="Jupyter Notebook 27.3%"></span><span class="seg" style="width:27.27%;background:#3178c6" title="TypeScript 27.3%"></span><span class="seg" style="width:9.09%;background:#f1e05a" title="JavaScript 9.1%"></span></div>
       <ul class="langkey">
-        <li><span class="dot" style="background:#3572A5" aria-hidden="true"></span>Python <span class="pct">3 projects</span></li>
+        <li><span class="dot" style="background:#3572A5" aria-hidden="true"></span>Python <span class="pct">4 projects</span></li>
         <li><span class="dot" style="background:#DA5B0B" aria-hidden="true"></span>Jupyter Notebook <span class="pct">3 projects</span></li>
         <li><span class="dot" style="background:#3178c6" aria-hidden="true"></span>TypeScript <span class="pct">3 projects</span></li>
         <li><span class="dot" style="background:#f1e05a" aria-hidden="true"></span>JavaScript <span class="pct">1 project</span></li>
