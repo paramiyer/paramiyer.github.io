@@ -446,6 +446,11 @@ function renderCitations({ perYear, total, works, hIndex }) {
  * under client confidentiality.
  */
 async function fetchActivity() {
+  /* Set when a local snapshot exists but has aged out. The API path that follows
+   * sees public repositories only, so the numbers drop sharply - 275 commits
+   * became 7 the first time this happened silently. The page says so rather than
+   * presenting a much smaller number as if it were the whole picture. */
+  let staleBy = null;
   /* A locally-counted snapshot beats the API: it sees private repos without any
    * credential. Used when present and fresher than the window it describes. */
   try {
@@ -454,6 +459,7 @@ async function fetchActivity() {
     const ageDays = (Date.now() - new Date(local.generated_at)) / 86400000;
     if (ageDays <= local.days) return local;
     console.warn(`  ! activity-local.json is ${ageDays.toFixed(1)}d old — falling back to the API`);
+    staleBy = Math.round(ageDays);
   } catch { /* no local snapshot; use the API */ }
 
   const since = new Date(Date.now() - ACTIVITY_DAYS * 86400000).toISOString();
@@ -489,6 +495,7 @@ async function fetchActivity() {
     scope: HAS_PAT
       ? 'the GitHub API across all repositories'
       : 'the GitHub API across public repositories only',
+    staleBy,
   };
 }
 
@@ -503,9 +510,19 @@ function renderActivity(a, refreshed) {
     .map(([n, l]) => `<span><b>${n}</b> ${l}</span>`)
     .join('<span class="sep" aria-hidden="true">·</span>');
 
+  /* When the local snapshot has aged out, say so on the page. The fallback counts
+   * public repositories only, so the figures understate the week substantially -
+   * and a quietly shrinking number is worse than an openly incomplete one. */
+  const stale = a.staleBy
+    ? `<p class="act-stale"><strong>Incomplete week.</strong> The local snapshot is
+      ${a.staleBy} ${a.staleBy === 1 ? 'day' : 'days'} out of date, so these figures cover
+      public repositories only and understate the period. Most work happens in private
+      repositories.</p>`
+    : '';
+
   return `<div class="activity">
       <p class="act-line">${bits}</p>
-      <p class="act-note">Rolling ${a.days} days to ${esc(refreshed)}, counted from ${esc(a.scope)}. Repository and client names are omitted by design.</p>
+      <p class="act-note">Rolling ${a.days} days to ${esc(refreshed)}, counted from ${esc(a.scope)}. Repository and client names are omitted by design.</p>${stale}
     </div>`;
 }
 

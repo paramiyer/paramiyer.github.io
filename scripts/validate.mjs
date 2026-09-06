@@ -121,6 +121,15 @@ async function main() {
   if (groups.length && total !== tile) bad(`homepage: product groups sum to ${total} but the tile says ${tile}`);
   else ok(`product count is consistent: groups sum to ${total}, tile says ${tile}`);
 
+  // 6b. any "N products" claim in prose must match the tile
+  const tileN = Number(pick(pages[0].html, /data-count="(\d+)">\d+<\/div>\s*<div class="metric-l">Products/));
+  for (const m of pages[0].html.matchAll(/<b>(\d+) products<\/b>/g)) {
+    if (Number(m[1]) !== tileN) {
+      bad(`homepage: prose claims "${m[1]} products" but the tile says ${tileN}`);
+    }
+  }
+  if (tileN) ok(`prose product claims agree with the tile (${tileN})`);
+
   // 7. activity numbers are present and non-zero
   if (!stats.activity || !stats.activity.commits) bad('activity snapshot missing or zero');
   else ok(`activity present: ${stats.activity.commits} commits (${stats.activity.scope})`);
