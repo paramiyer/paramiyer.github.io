@@ -143,6 +143,21 @@ async function main() {
       bad(`${p.file}: consent default must come before gtag.js and config (got ${c}, ${lib}, ${cfg})`);
     }
   }
+  /* 404.html is not in the sitemap, so it is not in `pages` - but it loads the
+   * same tag and carries the same silent-failure risk, so check it explicitly. */
+  if (await exists('404.html')) {
+    const h = await readFile(join(ROOT, '404.html'), 'utf8');
+    const c = h.indexOf("gtag('consent', 'default'");
+    const lib = h.indexOf('googletagmanager.com/gtag/js');
+    const cfg = h.indexOf("gtag('config'");
+    if (lib !== -1) {
+      if (c === -1) bad('404.html: loads gtag.js with no Consent Mode default');
+      else if (!(c < lib && lib < cfg)) bad('404.html: consent default must precede gtag.js and config');
+      else ok('404.html consent ordering is correct');
+      if (!/name="robots" content="noindex"/.test(h)) bad('404.html: lost its noindex');
+    }
+  }
+
   ok('Consent Mode defaults precede the tag on every page that loads it');
 
   // 7. activity numbers are present and non-zero

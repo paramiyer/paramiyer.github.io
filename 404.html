@@ -2,6 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) with Consent Mode v2.
+     Consent defaults are set BEFORE gtag.js loads and before config - order is
+     load-bearing; a default declared after config arrives too late to gate the
+     first hit. The region list is enforced by Google against the visitor's IP,
+     so no geolocation or cookie banner is needed here: EEA, UK and Swiss
+     visitors are denied storage by default and measured with cookieless pings,
+     everyone else is granted. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  /* EU 27 + EEA (IS, LI, NO) + UK + CH. Denied until explicitly granted. */
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
+             'IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE',
+             'IS','LI','NO','GB','CH'],
+    wait_for_update: 500
+  });
+
+  /* Everywhere else. This site runs no ads and builds no audiences, so the ad
+     signals stay denied globally rather than being granted and left unused. */
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    personalization_storage: 'granted',
+    security_storage: 'granted'
+  });
+
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z5VGCH78G"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5VGCH78G', {
+    anonymize_ip: true,
+    page_title: '404 Not Found',
+    /* GitHub Pages serves this file while leaving the requested path in the URL
+       bar, so page_location is already the URL that failed - no rewriting needed. */
+    page_location: location.href
+  });
+
+  /* The page_view alone says a 404 happened. This says where it came from, which
+     is the part that lets a broken inbound link actually be found and fixed. */
+  gtag('event', 'page_not_found', {
+    missing_path: location.pathname + location.search,
+    referrer: document.referrer || '(direct or unknown)'
+  });
+</script>
 <title>Page not found | Parameshwaran Iyer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Principal AI Architect and Enterprise AI Leader based in the UAE. I design, build and scale production AI and GenAI platforms for banking, government, aviation and telecom across the GCC.">
