@@ -130,6 +130,21 @@ async function main() {
   }
   if (tileN) ok(`prose product claims agree with the tile (${tileN})`);
 
+  // 6c. Consent Mode defaults must precede the gtag library and config on every
+  // page. A default declared after config arrives too late to gate the first hit,
+  // which is a silent compliance failure - the page looks correct and is not.
+  for (const p of pages) {
+    const c = p.html.indexOf("gtag('consent', 'default'");
+    const lib = p.html.indexOf('googletagmanager.com/gtag/js');
+    const cfg = p.html.indexOf("gtag('config'");
+    if (lib === -1) continue;                       // no analytics on this page is fine
+    if (c === -1) { bad(`${p.file}: loads gtag.js with no Consent Mode default`); continue; }
+    if (!(c < lib && lib < cfg)) {
+      bad(`${p.file}: consent default must come before gtag.js and config (got ${c}, ${lib}, ${cfg})`);
+    }
+  }
+  ok('Consent Mode defaults precede the tag on every page that loads it');
+
   // 7. activity numbers are present and non-zero
   if (!stats.activity || !stats.activity.commits) bad('activity snapshot missing or zero');
   else ok(`activity present: ${stats.activity.commits} commits (${stats.activity.scope})`);
