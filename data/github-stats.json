@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-26T10:54:37.368Z",
-  "refreshed_label": "26 Oct 2026",
+  "generated_at": "2026-11-02T13:17:31.088Z",
+  "refreshed_label": "2 Nov 2026",
   "project_count": 11,
   "public_project_count": 5,
   "capability_count": 9,
@@ -39,7 +39,7 @@
     "prs": 0,
     "runs": 0,
     "scope": "the GitHub API across public repositories only",
-    "staleBy": 42
+    "staleBy": 49
   },
   "projects": [
     {
