@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-02T13:17:31.088Z",
-  "refreshed_label": "2 Nov 2026",
+  "generated_at": "2026-11-09T13:43:40.998Z",
+  "refreshed_label": "9 Nov 2026",
   "project_count": 11,
   "public_project_count": 5,
   "capability_count": 9,
@@ -16,30 +16,30 @@
       "2013": 9,
       "2014": 4,
       "2015": 7,
-      "2016": 9,
+      "2016": 8,
       "2017": 9,
       "2018": 4,
       "2019": 7,
       "2020": 21,
       "2021": 10,
-      "2022": 13,
-      "2023": 12,
+      "2022": 15,
+      "2023": 13,
       "2024": 4,
-      "2025": 6,
+      "2025": 8,
       "2026": 6
     },
-    "total": 142,
+    "total": 146,
     "works": 9,
     "hIndex": 5
   },
   "activity": {
     "days": 7,
-    "commits": 1,
-    "repos": 1,
+    "commits": 0,
+    "repos": 0,
     "prs": 0,
     "runs": 0,
     "scope": "the GitHub API across public repositories only",
-    "staleBy": 49
+    "staleBy": 56
   },
   "projects": [
     {
